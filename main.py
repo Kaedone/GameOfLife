@@ -54,9 +54,9 @@ def repaint():
 
 
 root = Tk()
-root.title('4 cuba')
-win_width = int(350)
-win_height = int(370)
+root.title('GameOfLife')
+win_width = int(500)
+win_height = int(520)
 config_string = "{0}x{1}".format(win_width, win_height + 32)
 fill_color = "green"
 root.geometry(config_string)
@@ -85,10 +85,10 @@ canvas.itemconfig(cell_matrix[addr(9, 7)], state=NORMAL, tags='vis')
 canvas.itemconfig(cell_matrix[addr(10, 7)], state=NORMAL, tags='vis')
 
 frame = Frame(root)
-btn1 = Button(frame, text='Eval', command=step)
-btn2 = Button(frame, text='Clear', command=clear)
-btn1.pack(side='left')
-btn2.pack(side='right')
+evolution = Button(frame, text='Эволюционироват', command=step, font='11')
+clearing = Button(frame, text='Очистить', command=clear, font='11')
+evolution.pack(side='left')
+clearing.pack(side='right')
 frame.pack(side='bottom')
 
 canvas.bind('<B1-Motion>', draw_a)
