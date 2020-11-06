@@ -2,8 +2,8 @@ from tkinter import Tk, Canvas, Button, Frame, BOTH, NORMAL, HIDDEN
 
 
 def draw_a(e):
-    ii = (e.y - 3) / cell_size
-    jj = (e.x - 3) / cell_size
+    ii = int((e.y - 3) / cell_size)
+    jj = int((e.x - 3) / cell_size)
     canvas.itemconfig(cell_matrix[addr(ii, jj)], state=NORMAL, tags='vis')
 
 
@@ -38,7 +38,6 @@ def step():
 
 
 def clear():
-
     for i in range(field_height):
         for j in range(field_width):
             canvas.itemconfig(cell_matrix[addr(i, j)], state=HIDDEN, tags=('hid', '0'))
@@ -85,13 +84,12 @@ canvas.itemconfig(cell_matrix[addr(9, 7)], state=NORMAL, tags='vis')
 canvas.itemconfig(cell_matrix[addr(10, 7)], state=NORMAL, tags='vis')
 
 frame = Frame(root)
-evolution = Button(frame, text='Эволюционироват', command=step, font='11')
-clearing = Button(frame, text='Очистить', command=clear, font='11')
+evolution: Button = Button(frame, text="Эволюционировать", command=step, font='11')
+clearing: Button = Button(frame, text='Очистить', command=clear, font='11')
 evolution.pack(side='left')
 clearing.pack(side='right')
 frame.pack(side='bottom')
 
 canvas.bind('<B1-Motion>', draw_a)
-canvas.bind('<ButtonPress>', draw_a)
 
 root.mainloop()
