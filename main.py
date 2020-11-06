@@ -85,7 +85,7 @@ canvas.itemconfig(cell_matrix[addr(9, 7)], state=NORMAL, tags='vis')
 canvas.itemconfig(cell_matrix[addr(10, 7)], state=NORMAL, tags='vis')
 
 frame = Frame(root)
-evolution = Button(frame, text='Эволюционироват', command=step, font='11')
+evolution = Button(frame, text='Эволюционировать', command=step, font='11')
 clearing = Button(frame, text='Очистить', command=clear, font='11')
 evolution.pack(side='left')
 clearing.pack(side='right')
