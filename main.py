@@ -1,4 +1,32 @@
 from tkinter import Tk, Canvas, Button, Frame, BOTH, NORMAL, HIDDEN
+import tkinter
+
+def inputbox(title, message, button_text):
+    root = tkinter.Tk()
+    root.title(title)
+    root.resizable(False, False)
+
+    label = tkinter.Label(text=message)
+    label.pack()
+
+    text = ''
+    def on_return(e=None):
+        nonlocal text
+        text = textbox.get()
+        root.destroy()
+
+    textbox = tkinter.Entry(width=40)
+    textbox.bind('<Return>', on_return)
+    textbox.pack()
+    textbox.focus_set()
+
+    button = tkinter.Button(text=button_text, command=on_return)
+    button.pack()
+
+    root.mainloop()
+
+    return text
+
 
 
 def draw_a(e):
@@ -51,11 +79,12 @@ def repaint():
             if canvas.gettags(cell_matrix[addr(i, j)])[1] == 'to_vis':
                 canvas.itemconfig(cell_matrix[addr(i, j)], state=NORMAL, tags=('vis', '0'))
 
-
+x=(inputbox("GameOfLife", "Введите ширину игрового поля", "Go!"))
+y=(inputbox("GameOfLife", "Введите высоту игрового поля", "Go!"))
 root = Tk()
 root.title('GameOfLife')
-win_width = int(500)
-win_height = int(520)
+win_width = int(x)
+win_height = int(y)
 config_string = "{0}x{1}".format(win_width, win_height + 32)
 fill_color = "green"
 root.geometry(config_string)
